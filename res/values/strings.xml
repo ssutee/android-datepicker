@@ -9,4 +9,8 @@
     <string name="saturday">Sat</string>
    
     <string name="app_name">CalendarView</string>
+   
+    <string name="set">Set</string>
+   
+    <string name="dialog">Dialog</string>
 </resources>
