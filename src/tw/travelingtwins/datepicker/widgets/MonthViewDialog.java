@@ -48,6 +48,10 @@ public class MonthViewDialog implements OnDateSelectedListener {
 		}
 	}
 
+	public boolean isShowing() {
+		return mDialog != null && mDialog.isShowing();
+	}
+
 	public void dismiss() {
 		if (mDialog != null && mDialog.isShowing()) {
 			mDialog.dismiss();
