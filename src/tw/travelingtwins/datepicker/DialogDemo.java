@@ -6,13 +6,13 @@ import java.util.Locale;
 
 import tw.travelingtwins.datepicker.widgets.MonthView;
 import tw.travelingtwins.datepicker.widgets.MonthViewDialog;
-import tw.travelingtwins.datepicker.widgets.MonthViewDialog.OnDateSetLintener;
+import tw.travelingtwins.datepicker.widgets.MonthViewDialog.OnDateSetListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class DialogDemo extends Activity implements OnDateSetLintener {
+public class DialogDemo extends Activity implements OnDateSetListener {
 
 	private MonthViewDialog mDialog;
 	private Calendar mDate = Calendar.getInstance();

@@ -15,12 +15,12 @@ public class MonthViewDialog implements OnDateSelectedListener {
 
 	private AlertDialog mDialog;
 	private MonthView mMonthView;
-	private OnDateSetLintener onDateSetLintener;
+	private OnDateSetListener onDateSetListener;
 	private Calendar mDate = Calendar.getInstance();
 	private FrameLayout mFrame;
 	private Context mContext;
 
-	public MonthViewDialog(Context context, OnDateSetLintener callBack,
+	public MonthViewDialog(Context context, OnDateSetListener callBack,
 			int year, int month, int dayOfMonth) {
 		mContext = context;
 		View view = (View) LayoutInflater.from(context).inflate(
@@ -30,7 +30,7 @@ public class MonthViewDialog implements OnDateSelectedListener {
 
 		mDialog = new AlertDialog.Builder(context).create();
 		mDialog.setView(view, 0, 0, 0, 0);
-		onDateSetLintener = callBack;
+		onDateSetListener = callBack;
 		mDate.set(Calendar.YEAR, year);
 		mDate.set(Calendar.MONTH, month);
 		mDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -59,15 +59,15 @@ public class MonthViewDialog implements OnDateSelectedListener {
 		mDialog = null;
 	}
 
-	public interface OnDateSetLintener {
+	public interface OnDateSetListener {
 		public void onDateSet(MonthView view, int year, int month,
 				int dayOfMonth);
 	}
 
 	@Override
 	public void onDateSelected(Calendar date) {
-		if (onDateSetLintener != null) {
-			onDateSetLintener.onDateSet(mMonthView, date.get(Calendar.YEAR),
+		if (onDateSetListener != null) {
+			onDateSetListener.onDateSet(mMonthView, date.get(Calendar.YEAR),
 					date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH));
 		}
 		dismiss();
