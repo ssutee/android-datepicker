@@ -3,6 +3,7 @@ package tw.travelingtwins.datepicker.widgets;
 import java.util.Calendar;
 import java.util.Date;
 
+import android.util.Log;
 import tw.travelingtwins.datepicker.R;
 import android.content.Context;
 import android.graphics.Color;
@@ -80,9 +81,9 @@ public class MonthView extends LinearLayout {
 		((ImageButton) mMonthIndicator.findViewById(R.id.next_month))
 				.setOnClickListener(ChangeMonthListener);
 
-		mCurrentMonth.set(Calendar.DAY_OF_MONTH, 1);
-
 		mViewSwitcher = (ViewSwitcher) findViewById(R.id.calendar_switcher);
+
+        mCurrentMonth.set(Calendar.DAY_OF_MONTH, 1);
 		mViewSwitcher.addView(getCalendarView());
 		mViewSwitcher.addView(getCalendarView());
 
@@ -127,19 +128,12 @@ public class MonthView extends LinearLayout {
 	private View fillCalendarView(TableLayout calendar) {
 		calendar.removeAllViews();
 
-		int firstDayOfWeek, lastMonthDay, nextMonthDay, currentWeek;
+		int firstDayOfWeek, lastMonthDay, nextMonthDay;
+
+        mCurrentMonth.set(Calendar.DAY_OF_MONTH, 1);
 
 		// get which day is on the first date of the month
 		firstDayOfWeek = mCurrentMonth.get(Calendar.DAY_OF_WEEK) - 1;
-		currentWeek = mCurrentMonth.get(Calendar.WEEK_OF_YEAR) - 1;
-
-		// adjustment for week number when January starts with first day of
-		// month as Sunday
-		if (firstDayOfWeek == 0
-				&& mCurrentMonth.get(Calendar.MONTH) == Calendar.JANUARY)
-			currentWeek = 1;
-		if (currentWeek == 0)
-			currentWeek = 52;
 
 		// lastMonth will be used to display last few dates of previous month in
 		// the calendar
